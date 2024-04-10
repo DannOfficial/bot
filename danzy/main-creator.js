@@ -1,14 +1,9 @@
-/**
- * DannTeam
- * ig: @dannalwaysalone
-*/
-
 var fs = require('fs');
 
 var danz = async (m, { conn, usedPrefix, text, args, command }) => {
   try {
-    const status = conn.fetchStatus(nomorown + "@s.whatsapp.net")
     const authors = await conn.getName(nomorown + "@s.whatsapp.net")
+    const bio = await conn.getBusinessProfile(nomorown + "@s.whatsapp.net")
     var name = m.sender;
 
     var fkonn = {
@@ -57,7 +52,7 @@ END:VCARD`;
       var vcard = `BEGIN:VCARD
 VERSION:3.0
 N:;${authors};;;\nFN:${authors}\nORG:${authors}\nTITLE:\nitem1.TEL;waid=6283137550315:+62 831-3755-0315
-item1.X-ABLabel:${authors}\nX-WA-BIZ-DESCRIPTION:${status}
+item1.X-ABLabel:${authors}\nX-WA-BIZ-DESCRIPTION:${bio.description}
 X-WA-BIZ-NAME:${authors}\nEND:VCARD`;
       
       await conn.sendMessage(m.chat, { contacts: { displayName: wm, contacts: [{ vcard }] }}, { quoted: fkonn });

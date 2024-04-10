@@ -21,7 +21,7 @@ module.exports = danz
 
 async function bard(prompt) {
   try {
-    const response = await axios.post('https://bardieapi.fasturl.cloud/api/onstage', {
+    const response = await axios.post('https://bard.rizzy.eu.org/backend/conversation', {
       ask: prompt
     }, {
       headers: {
